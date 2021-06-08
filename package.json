@@ -21,7 +21,7 @@
     },
     "author": "Kristóf-Attila Kovács",
     "name": "simple_currencyscoop",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "devDependencies": {
         "@types/tiny-json-http": "^7.3.0"
     }
