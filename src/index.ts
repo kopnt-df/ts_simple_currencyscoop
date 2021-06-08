@@ -1,3 +1,3 @@
 export { CurrencyScoopApi } from './currencyScoopApi'
 
-export * from './types'
+export { CurrencyRates } from './types'
