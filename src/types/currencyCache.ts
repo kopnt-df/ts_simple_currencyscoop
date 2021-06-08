@@ -10,7 +10,7 @@ import { CurrencyRates } from './currencyRates'
 /* ------------------------------------------------------ type: CurrencyCache ----------------------------------------------------- */
 
 export type CurrencyCache = CurrencyRates & {
-    lastUpdateTs: number
+    lastUpdateMs: number
 }
 
 

@@ -17,9 +17,11 @@ export class CurrencyScoopApi {
     /* ------------------------------------------------------ Constructor ----------------------------------------------------- */
 
     constructor(
-        apiKey: string
+        apiKey: string,
+        maxCacheAgeMs: number = 1000*60*60
     ) {
         this.apiKey = apiKey
+        this.maxCacheAgeMs = maxCacheAgeMs
         this.cache = {}
     }
 
@@ -27,7 +29,7 @@ export class CurrencyScoopApi {
     /* --------------------------------------------------- Public properties -------------------------------------------------- */
 
     apiKey: string
-    maxCacheAgeSeconds: number
+    maxCacheAgeMs: number
 
 
     /* -------------------------------------------------- Private properties -------------------------------------------------- */
@@ -120,7 +122,7 @@ export class CurrencyScoopApi {
     ): CurrencyCache | null {
         const currencyCache = this.cache[base]
 
-        return currencyCache != null && Date.now() - currencyCache.lastUpdateTs <= this.maxCacheAgeSeconds ? currencyCache : null
+        return currencyCache != null && Date.now() - currencyCache.lastUpdateMs <= this.maxCacheAgeMs ? currencyCache : null
     }
 
     private cacheRates(
@@ -131,7 +133,7 @@ export class CurrencyScoopApi {
     ) {
         this.cache[base] = {
             base: base,
-            lastUpdateTs: Date.now(),
+            lastUpdateMs: Date.now(),
             rates: rates
         }
     }
