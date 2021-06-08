@@ -120,7 +120,7 @@ export class CurrencyScoopApi {
     ): CurrencyCache | null {
         const currencyCache = this.cache[base]
 
-        return currencyCache != null && Date.now() - currencyCache.lastUpdateTs > this.maxCacheAgeSeconds ? currencyCache : null
+        return currencyCache != null && Date.now() - currencyCache.lastUpdateTs <= this.maxCacheAgeSeconds ? currencyCache : null
     }
 
     private cacheRates(
